@@ -1,5 +1,6 @@
 package test.pivotal.pal.trackerapi;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.DocumentContext;
 import io.pivotal.pal.tracker.PalTrackerApplication;
 import io.pivotal.pal.tracker.TimeEntry;
@@ -87,6 +88,9 @@ public class TimeEntryApiTest {
         long userId = 3L;
         TimeEntry updatedTimeEntry = new TimeEntry(projectId, userId, LocalDate.parse("2017-01-09"), 9);
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        String tmp = objectMapper.writeValueAsString(updatedTimeEntry);
+//        objectMapper.readValue(tmp, TimeEntry.class);
 
         ResponseEntity<String> updateResponse = restTemplate.exchange("/time-entries/" + id, HttpMethod.PUT, new HttpEntity<>(updatedTimeEntry, null), String.class);
 
