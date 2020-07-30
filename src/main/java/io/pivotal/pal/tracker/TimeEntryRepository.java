@@ -7,7 +7,7 @@ public interface TimeEntryRepository {
 
     public List<TimeEntry> list();
 
-    public TimeEntry find(long TimeEntryId);
+    public TimeEntry find(long timeEntryId);
 
     public TimeEntry update(long eq, TimeEntry any);
 
